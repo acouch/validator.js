@@ -164,7 +164,17 @@
     validator.contains = function (str, elem) {
         return str.indexOf(validator.toString(elem)) >= 0;
     };
-
+    
+    validator.hasOneOf = function (str, elem) {
+        options = seed.split(",");
+        for (var key in options) {
+          if (str.indexOf(options[key]) === 0) {
+            return 1;
+          }
+        }
+        return 0;
+    };
+    
     validator.matches = function (str, pattern, modifiers) {
         if (Object.prototype.toString.call(pattern) !== '[object RegExp]') {
             pattern = new RegExp(pattern, modifiers);
