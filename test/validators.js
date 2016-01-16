@@ -762,6 +762,12 @@ describe('Validators', function () {
         test({ validator: 'contains', args: ['foo'], valid: ['foo', 'foobar', 'bazfoo'],
             invalid: ['bar', 'fobar'] });
     });
+    
+    it('should validate strings that have on of another string', function () {
+        test({ validator: 'hasOneOf', args: ['foo;bar;bazfoo'], valid: ['foo', 'bar', 'bazfoo'],
+            invalid: ['baz', 'fobar'] });
+    });    
+    
 
     it('should validate strings against a pattern', function () {
         test({ validator: 'matches', args: [/abc/], valid: ['abc', 'abcdef', '123abc'],
